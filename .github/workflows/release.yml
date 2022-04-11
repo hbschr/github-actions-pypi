@@ -6,16 +6,16 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v3
       with:
         python-version: '3.x'
     - name: Install build dependencies
@@ -25,5 +25,5 @@ jobs:
     - name: Publish
       uses: pypa/gh-action-pypi-publish@master
       with:
-        password: ${{ secrets.pypi_password }}
+        password: ${{ secrets.PYPI_PASSWORD }}
         skip_existing: true
